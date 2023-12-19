@@ -1,0 +1,472 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\DG> cd .\Resources
+PS C:\Users\DG\Resources> dir
+
+
+    Directory: C:\Users\DG\Resources
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/18/2023   7:42 PM                11-Exam-Preparation-Library
+d-----        12/19/2023   9:05 AM                Watchlist
+
+
+PS C:\Users\DG\Resources> cd .\Watchlist
+PS C:\Users\DG\Resources\Watchlist> docker build -t test1
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+Command "build" not available in current context (librarycontext), you can use the "default" context to run this command
+PS C:\Users\DG\Resources\Watchlist> docker context default default
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+Manage contexts
+
+Usage:
+  docker context [command]
+
+Available Commands:
+  create      Create new context
+  export      Export a context to a tar or kubeconfig file
+  import      Import a context from a tar or zip file
+  inspect     Display detailed information on one or more contexts
+  list        List available contexts
+  rm          Remove one or more contexts
+  show        Print the current context
+  update      Update a context
+  use         Set the default context
+
+Flags:
+  -h, --help   Help for context
+
+Use "docker context [command] --help" for more information about a command.
+PS C:\Users\DG\Resources\Watchlist> docker context use default
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+default
+Current context is now "default"
+PS C:\Users\DG\Resources\Watchlist> docker build -t test1
+ERROR: "docker buildx build" requires exactly 1 argument.
+See 'docker buildx build --help'.
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Start a build
+PS C:\Users\DG\Resources\Watchlist> docker build -t test1 .
+[+] Building 0.1s (2/2) FINISHED                                                                         docker:default
+ => [internal] load .dockerignore                                                                                  0.1s
+ => => transferring context: 382B                                                                                  0.0s
+ => [internal] load build definition from Dockerfile                                                               0.1s
+ => => transferring dockerfile: 2B                                                                                 0.0s
+ERROR: failed to solve: failed to read dockerfile: open /var/lib/docker/tmp/buildkit-mount2787135402/Dockerfile: no such file or directory
+
+View build details: docker-desktop://dashboard/build/default/default/5pb3n98r82ukctyiegblw01rt
+PS C:\Users\DG\Resources\Watchlist> docker build -t test1 .
+2023/12/19 09:22:29 http2: server: error reading preface from client //./pipe/docker_engine: file has already been closed
+[+] Building 0.0s (2/2) FINISHED                                                                         docker:default
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 382B                                                                                  0.0s
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 2B                                                                                 0.0s
+ERROR: failed to solve: failed to read dockerfile: open /var/lib/docker/tmp/buildkit-mount1499868751/Dockerfile: no such file or directory
+
+View build details: docker-desktop://dashboard/build/default/default/xydqrvcgkc5b9mo2i3rqpgo4w
+PS C:\Users\DG\Resources\Watchlist> docker build -t test1 .
+2023/12/19 09:23:10 http2: server: error reading preface from client //./pipe/docker_engine: file has already been closed
+[+] Building 69.7s (19/19) FINISHED                                                                      docker:default
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 382B                                                                                  0.0s
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 812B                                                                               0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                               0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                                  0.4s
+ => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0                                                            0.0s
+ => [build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:0a5b3ebeef93680846d12969873c5a57b7b70ae75b1cc7f0c793  0.0s
+ => [internal] load build context                                                                                  0.3s
+ => => transferring context: 8.23MB                                                                                0.3s
+ => CACHED [build 2/8] WORKDIR /src                                                                                0.0s
+ => [build 3/8] COPY [Watchlist/Watchlist.csproj, Watchlist/]                                                      0.1s
+ => [build 4/8] COPY [Watchlist.Data/Watchlist.Data.csproj, Watchlist.Data/]                                       0.0s
+ => [build 5/8] RUN dotnet restore "Watchlist/Watchlist.csproj"                                                   50.3s
+ => [build 6/8] COPY . .                                                                                           0.1s
+ => [build 7/8] WORKDIR /src/Watchlist                                                                             0.0s
+ => [build 8/8] RUN dotnet build "Watchlist.csproj" -c Release -o /app/build                                      10.3s
+ => [publish 1/1] RUN dotnet publish "Watchlist.csproj" -c Release -o /app/publish /p:UseAppHost=false             6.8s
+ => CACHED [base 2/2] WORKDIR /app                                                                                 0.0s
+ => CACHED [final 1/2] WORKDIR /app                                                                                0.0s
+ => [final 2/2] COPY --from=publish /app/publish .                                                                 0.6s
+ => exporting to image                                                                                             0.3s
+ => => exporting layers                                                                                            0.3s
+ => => writing image sha256:b57c51dec99d29e438c032ec2b4afc0a2842ffd3607a7c3d078c900594e3afbd                       0.0s
+ => => naming to docker.io/library/test1                                                                           0.0s
+
+View build details: docker-desktop://dashboard/build/default/default/pp7qesf3fzd9pnl8ichl0jas8
+
+What's Next?
+  View a summary of image vulnerabilities and recommendations → docker scout quickview
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                CREATED          STATUS          PORTS             NAMES
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"   49 minutes ago   Up 49 minutes   80/tcp, 443/tcp   beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker context ls
+NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                             KUBERNETES ENDPOINT   ORCHESTRATOR
+default *           moby                Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine
+desktop-linux       moby                Docker Desktop                            npipe:////./pipe/dockerDesktopLinuxEngine
+librarycontext      aci                 soletilibraryrg@westeurope
+PS C:\Users\DG\Resources\Watchlist> docker run -d test1
+cdde979df42f0ccd15e49d296653039c0e861997cf2c23772085b518dfbfa5a3
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED          STATUS          PORTS             NAMES
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   9 seconds ago    Up 9 seconds    80/tcp, 443/tcp   unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     50 minutes ago   Up 50 minutes   80/tcp, 443/tcp   beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+[+] Building 0.5s (19/19) FINISHED                                                                       docker:default
+ => [web-app internal] load .dockerignore                                                                          0.0s
+ => => transferring context: 382B                                                                                  0.0s
+ => [web-app internal] load build definition from Dockerfile                                                       0.0s
+ => => transferring dockerfile: 812B                                                                               0.0s
+ => [web-app internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                          0.4s
+ => [web-app internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                       0.0s
+ => [web-app build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:0a5b3ebeef93680846d12969873c5a57b7b70ae75b1c  0.0s
+ => [web-app base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0                                                    0.0s
+ => [web-app internal] load build context                                                                          0.0s
+ => => transferring context: 9.16kB                                                                                0.0s
+ => CACHED [web-app base 2/2] WORKDIR /app                                                                         0.0s
+ => CACHED [web-app final 1/2] WORKDIR /app                                                                        0.0s
+ => CACHED [web-app build 2/8] WORKDIR /src                                                                        0.0s
+ => CACHED [web-app build 3/8] COPY [Watchlist/Watchlist.csproj, Watchlist/]                                       0.0s
+ => CACHED [web-app build 4/8] COPY [Watchlist.Data/Watchlist.Data.csproj, Watchlist.Data/]                        0.0s
+ => CACHED [web-app build 5/8] RUN dotnet restore "Watchlist/Watchlist.csproj"                                     0.0s
+ => CACHED [web-app build 6/8] COPY . .                                                                            0.0s
+ => CACHED [web-app build 7/8] WORKDIR /src/Watchlist                                                              0.0s
+ => CACHED [web-app build 8/8] RUN dotnet build "Watchlist.csproj" -c Release -o /app/build                        0.0s
+ => CACHED [web-app publish 1/1] RUN dotnet publish "Watchlist.csproj" -c Release -o /app/publish /p:UseAppHost=f  0.0s
+ => CACHED [web-app final 2/2] COPY --from=publish /app/publish .                                                  0.0s
+ => [web-app] exporting to image                                                                                   0.0s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:7f42f58607f693220874df43cbdd613b881e20c529357197dd0f5670ebdc496b                       0.0s
+ => => naming to docker.io/library/watchlist-web-app                                                               0.0s
+[+] Running 4/4
+ ✔ Network watchlist_default   Created                                                                             0.1s
+ ✔ Volume "watchlist_sqldata"  Created                                                                             0.0s
+ ✔ Container sqlserver         Started                                                                             0.1s
+ ✔ Container web-app           Started                                                                             0.1s
+PS C:\Users\DG\Resources\Watchlist> docker-compose down
+[+] Running 3/3
+ ✔ Container sqlserver        Removed                                                                             10.8s
+ ✔ Container web-app          Removed                                                                              1.6s
+ ✔ Network watchlist_default  Removed                                                                              0.3s
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+[+] Running 3/3
+ ✔ Network watchlist_default  Created                                                                              0.0s
+ ✔ Container sqlserver        Started                                                                              0.1s
+ ✔ Container web-app          Started                                                                              0.1s
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS             PORTS                         NAMES
+49cb89399ac9   watchlist-web-app                            "dotnet Watchlist.dll"   6 seconds ago       Up 5 seconds       0.0.0.0:80->80/tcp, 443/tcp   web-app
+7db1d256842e   mcr.microsoft.com/mssql/server               "/opt/mssql/bin/perm…"   6 seconds ago       Up 5 seconds       0.0.0.0:1433->1433/tcp        sqlserver
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   13 minutes ago      Up 13 minutes      80/tcp, 443/tcp               unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour   80/tcp, 443/tcp               beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker-compose down
+[+] Running 3/3
+ ✔ Container sqlserver        Removed                                                                              0.0s
+ ✔ Container web-app          Removed                                                                              0.4s
+ ✔ Network watchlist_default  Removed                                                                              0.2s
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS             PORTS             NAMES
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   17 minutes ago      Up 17 minutes      80/tcp, 443/tcp   unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour   80/tcp, 443/tcp   beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+[+] Running 3/3
+ ✔ Network watchlist_default  Created                                                                              0.0s
+ ✔ Container sqlserver        Started                                                                              0.1s
+ ✔ Container web-app          Started                                                                              0.1s
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS                              PORTS                         NAMES
+dddc82c4225c   watchlist-web-app                            "dotnet Watchlist.dll"   4 seconds ago       Up 3 seconds                        0.0.0.0:80->80/tcp, 443/tcp   web-app
+431a4f5ac1d1   mcr.microsoft.com/mssql/server               "/opt/mssql/bin/perm…"   4 seconds ago       Exited (1) Less than a second ago                                 sqlserver
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   17 minutes ago      Exited (0) 9 seconds ago                                          unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour                    80/tcp, 443/tcp               beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker-compose down
+[+] Running 3/3
+ ✔ Container web-app          Removed                                                                              0.5s
+ ✔ Container sqlserver        Removed                                                                              0.0s
+ ✔ Network watchlist_default  Removed                                                                              0.2s
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d\
+unknown shorthand flag: '\\' in -\
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+[+] Running 3/3
+ ✔ Network watchlist_default  Created                                                                              0.0s
+ ✔ Container sqlserver        Started                                                                              0.2s
+ ✔ Container web-app          Started                                                                              0.2s
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS                     PORTS                         NAMES
+8a0323f8f122   mcr.microsoft.com/mssql/server               "/opt/mssql/bin/perm…"   6 seconds ago       Exited (1) 1 second ago                                  sqlserver
+4e7208989ede   watchlist-web-app                            "dotnet Watchlist.dll"   6 seconds ago       Up 5 seconds               0.0.0.0:80->80/tcp, 443/tcp   web-app
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   25 minutes ago      Exited (0) 7 minutes ago                                 unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour           80/tcp, 443/tcp               beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker-compose down
+[+] Running 3/3
+ ✔ Container sqlserver        Removed                                                                              0.0s
+ ✔ Container web-app          Removed                                                                              0.4s
+ ✔ Network watchlist_default  Removed                                                                              0.3s
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+[+] Running 3/3
+ ✔ Network watchlist_default  Created                                                                              0.0s
+ ✔ Container web-app          Started                                                                              0.0s
+ ✔ Container sqlserver        Started                                                                              0.0s
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS                     PORTS                         NAMES
+36b97e843e87   watchlist-web-app                            "dotnet Watchlist.dll"   6 seconds ago       Up 5 seconds               0.0.0.0:80->80/tcp, 443/tcp   web-app
+291d24c55769   mcr.microsoft.com/mssql/server               "/opt/mssql/bin/perm…"   6 seconds ago       Exited (1) 2 seconds ago                                 sqlserver
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   29 minutes ago      Up 11 seconds              80/tcp, 443/tcp               unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour           80/tcp, 443/tcp               beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker-compose down
+[+] Running 3/3
+ ✔ Container web-app          Removed                                                                              0.4s
+ ✔ Container sqlserver        Removed                                                                              0.0s
+ ✔ Network watchlist_default  Removed                                                                              0.2s
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+[+] Running 4/4
+ ✔ Network watchlist_default   Created                                                                             0.0s
+ ✔ Volume "watchlist_sqldata"  Created                                                                             0.0s
+ ✔ Container sqlserver         Started                                                                             0.1s
+ ✔ Container web-app           Started                                                                             0.0s
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS             PORTS                         NAMES
+cf08f650c811   mcr.microsoft.com/mssql/server               "/opt/mssql/bin/perm…"   5 seconds ago       Up 5 seconds       0.0.0.0:1433->1433/tcp        sqlserver
+36ba08e8024c   watchlist-web-app                            "dotnet Watchlist.dll"   5 seconds ago       Up 4 seconds       0.0.0.0:80->80/tcp, 443/tcp   web-app
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   29 minutes ago      Up 35 seconds      80/tcp, 443/tcp               unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour   80/tcp, 443/tcp               beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS             PORTS                         NAMES
+cf08f650c811   mcr.microsoft.com/mssql/server               "/opt/mssql/bin/perm…"   9 seconds ago       Up 9 seconds       0.0.0.0:1433->1433/tcp        sqlserver
+36ba08e8024c   watchlist-web-app                            "dotnet Watchlist.dll"   9 seconds ago       Up 9 seconds       0.0.0.0:80->80/tcp, 443/tcp   web-app
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   29 minutes ago      Up 39 seconds      80/tcp, 443/tcp               unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour   80/tcp, 443/tcp               beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS             PORTS                         NAMES
+cf08f650c811   mcr.microsoft.com/mssql/server               "/opt/mssql/bin/perm…"   11 seconds ago      Up 10 seconds      0.0.0.0:1433->1433/tcp        sqlserver
+36ba08e8024c   watchlist-web-app                            "dotnet Watchlist.dll"   11 seconds ago      Up 10 seconds      0.0.0.0:80->80/tcp, 443/tcp   web-app
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   29 minutes ago      Up 40 seconds      80/tcp, 443/tcp               unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour   80/tcp, 443/tcp               beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS             PORTS                         NAMES
+cf08f650c811   mcr.microsoft.com/mssql/server               "/opt/mssql/bin/perm…"   12 seconds ago      Up 11 seconds      0.0.0.0:1433->1433/tcp        sqlserver
+36ba08e8024c   watchlist-web-app                            "dotnet Watchlist.dll"   12 seconds ago      Up 11 seconds      0.0.0.0:80->80/tcp, 443/tcp   web-app
+cdde979df42f   test1                                        "dotnet Watchlist.dll"   29 minutes ago      Up 41 seconds      80/tcp, 443/tcp               unruffled_volhard
+0ee48ca16101   11-exam-preparation-library-web-app:latest   "dotnet Library.dll"     About an hour ago   Up About an hour   80/tcp, 443/tcp               beautiful_feistel
+PS C:\Users\DG\Resources\Watchlist> docker-compose down
+[+] Running 3/3
+ ✔ Container web-app          Removed                                                                              0.6s
+ ✔ Container sqlserver        Removed                                                                              1.5s
+ ✔ Network watchlist_default  Removed                                                                              0.3s
+PS C:\Users\DG\Resources\Watchlist> docker-compose down --volumes
+[+] Running 1/0
+ ✔ Volume watchlist_sqldata  Removed                                                                               0.0s
+PS C:\Users\DG\Resources\Watchlist> az login
+A web browser has been opened at https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize. Please continue the login in the web browser. If no web browser is available or if the web browser fails to open, use device code flow with `az login --use-device-code`.
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "4a06d40c-e447-42be-baef-dd0421ed10bd",
+    "id": "f8b530b3-4f44-4081-8951-31eed32e9d3c",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Azure for Students",
+    "state": "Enabled",
+    "tenantId": "4a06d40c-e447-42be-baef-dd0421ed10bd",
+    "user": {
+      "name": "Soleti1@students.softuni.bg",
+      "type": "user"
+    }
+  }
+]
+PS C:\Users\DG\Resources\Watchlist> az group create --name "soletimoviessrg" --location westeurope
+{
+  "id": "/subscriptions/f8b530b3-4f44-4081-8951-31eed32e9d3c/resourceGroups/soletimoviessrg",
+  "location": "westeurope",
+  "managedBy": null,
+  "name": "soletimoviessrg",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+PS C:\Users\DG\Resources\Watchlist> az acr create --resoure-group soletimoviessrg --name soletimoviescr --sku Basic
+the following arguments are required: --resource-group/-g
+
+Examples from AI knowledge base:
+az acr create --name MyRegistry --resource-group MyResourceGroup --sku Standard
+Create a managed container registry with the Standard SKU.
+
+az acr create --location westus2 --name MyRegistry --resource-group MyResourceGroup --sku Classic
+Create an Azure Container Registry. (autogenerated)
+
+https://docs.microsoft.com/en-US/cli/azure/acr#az_acr_create
+Read more about the command in reference docs
+PS C:\Users\DG\Resources\Watchlist> az acr create --resoure-group "soletimoviessrg" --name soletimoviescr --sku Basic
+the following arguments are required: --resource-group/-g
+
+Examples from AI knowledge base:
+az acr create --name MyRegistry --resource-group MyResourceGroup --sku Standard
+Create a managed container registry with the Standard SKU.
+
+az acr create --location westus2 --name MyRegistry --resource-group MyResourceGroup --sku Classic
+Create an Azure Container Registry. (autogenerated)
+
+https://docs.microsoft.com/en-US/cli/azure/acr#az_acr_create
+Read more about the command in reference docs
+PS C:\Users\DG\Resources\Watchlist> az acr create --resource-group soletimoviessrg --name soletimoviescr --sku Basic
+{
+  "adminUserEnabled": false,
+  "anonymousPullEnabled": false,
+  "creationDate": "2023-12-19T08:09:26.125389+00:00",
+  "dataEndpointEnabled": false,
+  "dataEndpointHostNames": [],
+  "encryption": {
+    "keyVaultProperties": null,
+    "status": "disabled"
+  },
+  "id": "/subscriptions/f8b530b3-4f44-4081-8951-31eed32e9d3c/resourceGroups/soletimoviessrg/providers/Microsoft.ContainerRegistry/registries/soletimoviescr",
+  "identity": null,
+  "location": "westeurope",
+  "loginServer": "soletimoviescr.azurecr.io",
+  "name": "soletimoviescr",
+  "networkRuleBypassOptions": "AzureServices",
+  "networkRuleSet": null,
+  "policies": {
+    "azureAdAuthenticationAsArmPolicy": {
+      "status": "enabled"
+    },
+    "exportPolicy": {
+      "status": "enabled"
+    },
+    "quarantinePolicy": {
+      "status": "disabled"
+    },
+    "retentionPolicy": {
+      "days": 7,
+      "lastUpdatedTime": "2023-12-19T08:09:32.640754+00:00",
+      "status": "disabled"
+    },
+    "softDeletePolicy": {
+      "lastUpdatedTime": "2023-12-19T08:09:32.640793+00:00",
+      "retentionDays": 7,
+      "status": "disabled"
+    },
+    "trustPolicy": {
+      "status": "disabled",
+      "type": "Notary"
+    }
+  },
+  "privateEndpointConnections": [],
+  "provisioningState": "Succeeded",
+  "publicNetworkAccess": "Enabled",
+  "resourceGroup": "soletimoviessrg",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "status": null,
+  "systemData": {
+    "createdAt": "2023-12-19T08:09:26.125389+00:00",
+    "createdBy": "Soleti1@students.softuni.bg",
+    "createdByType": "User",
+    "lastModifiedAt": "2023-12-19T08:09:26.125389+00:00",
+    "lastModifiedBy": "Soleti1@students.softuni.bg",
+    "lastModifiedByType": "User"
+  },
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries",
+  "zoneRedundancy": "Disabled"
+}
+PS C:\Users\DG\Resources\Watchlist> docker tag test1 soletimoviescr.azurecr.io/movies
+PS C:\Users\DG\Resources\Watchlist> docker push soletimoviescr.azurecr.io/movies
+Using default tag: latest
+The push refers to repository [soletimoviescr.azurecr.io/movies]
+a70efe4b80ae: Preparing
+5f70bf18a086: Preparing
+e14dbaf50435: Preparing
+056fbe282425: Preparing
+5e9ea9a030dc: Preparing
+fa6d2b6e60a7: Waiting
+003b73cb640a: Waiting
+1b6fd3ad4ce6: Waiting
+unauthorized: authentication required, visit https://aka.ms/acr/authorization for more information.
+PS C:\Users\DG\Resources\Watchlist> az acr login --name soletimoviescr
+Login Succeeded
+PS C:\Users\DG\Resources\Watchlist> docker push soletimoviescr.azurecr.io/movies
+Using default tag: latest
+The push refers to repository [soletimoviescr.azurecr.io/movies]
+Get "https://soletimoviescr.azurecr.io/v2/": net/http: request canceled (Client.Timeout exceeded while awaiting headers)PS C:\Users\DG\Resources\Watchlist>
+                                    docker push soletimoviescr.azurecr.io/movies
+Using default tag: latest
+The push refers to repository [soletimoviescr.azurecr.io/movies]
+a70efe4b80ae: Pushed
+5f70bf18a086: Pushed
+e14dbaf50435: Pushed
+056fbe282425: Pushed
+5e9ea9a030dc: Pushed
+fa6d2b6e60a7: Pushed
+003b73cb640a: Pushed
+1b6fd3ad4ce6: Pushed
+latest: digest: sha256:fde2bf981227fdbf98fb9830d59c3ec9eb965f03090c8135dca7773bcafe9a61 size: 1995
+PS C:\Users\DG\Resources\Watchlist> docker context create aci moviescontext
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+Using only available subscription : Azure for Students (f8b530b3-4f44-4081-8951-31eed32e9d3c)
+? Select a resource group soletimoviessrg (westeurope)
+Successfully created aci context "moviescontext"
+PS C:\Users\DG\Resources\Watchlist> docker context ls
+NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                             KUBERNETES ENDPOINT   ORCHESTRATOR
+default *           moby                Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine
+desktop-linux       moby                Docker Desktop                            npipe:////./pipe/dockerDesktopLinuxEngine
+librarycontext      aci                 soletilibraryrg@westeurope
+moviescontext       aci                 soletimoviessrg@westeurope
+PS C:\Users\DG\Resources\Watchlist> docker context use moviescontext
+moviescontext
+Current context is now "moviescontext"
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+cannot retrieve fileshare name for Azure file share
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+cannot retrieve fileshare name for Azure file share
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+cannot retrieve fileshare name for Azure file share
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+cannot retrieve fileshare name for Azure file share
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+cannot retrieve fileshare name for Azure file share
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+cannot retrieve fileshare name for Azure file share
+PS C:\Users\DG\Resources\Watchlist> docker ps -a
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+CONTAINER ID        IMAGE               COMMAND             STATUS              PORTS
+PS C:\Users\DG\Resources\Watchlist> docker down
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+unknown docker command: "down"
+PS C:\Users\DG\Resources\Watchlist> docker-compose down
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+containerinstance.ContainerGroupsClient#Get: Failure responding to request: StatusCode=404 -- Original Error: autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound" Message="The Resource 'Microsoft.ContainerInstance/containerGroups/watchlist' under resource group 'soletimoviessrg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+cannot retrieve fileshare name for Azure file share
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+cannot retrieve fileshare name for Azure file share
+PS C:\Users\DG\Resources\Watchlist> docker-compose up -d
+Docker Compose's integration for ECS and ACI will be retired in November 2023. Learn more: https://docs.docker.com/go/compose-ecs-eol/
+[+] Running 5/5
+ - soletimoviessa   Use existing                                                                                                                                 0.2s
+ - sql-volume       Created                                                                                                                                      0.6s
+ - Group watchlist  Created                                                                                                                                      5.1s
+ - sqlserver        Created                                                                                                                                    100.3s
+ - web-app          Created                                                                                                                                    100.3s
+PS C:\Users\DG\Resources\Watchlist> dir > directory.txt
+PS C:\Users\DG\Resources\Watchlist>
